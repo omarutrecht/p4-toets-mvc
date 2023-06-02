@@ -28,7 +28,6 @@ class Rijexamen extends BaseController
                         <td>$value->rijschool</td>
                         <td>$value->stad</td>
                         <td>$value->uitslag</td>
-                        <td><a href='/Rijexamen/index/$value->rijexamenid'><img src='https://www.freeiconspng.com/thumbs/car-icon-png/car-icon-png-25.png' width = '40px'></a></td>
                         </tr>
                       </tr>";
         }
@@ -37,7 +36,7 @@ class Rijexamen extends BaseController
         $data = [
             'titleaaa' => 'Instructeurs in dienst:
                                 ',
-                                'Amountofinstructeurs' => sizeof($Rijexamen),
+                                'Amountofinstructeurs' => sizeof($rijexamens),
 
             'rows' =>$rows
         ];
