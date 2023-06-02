@@ -1,22 +1,22 @@
 <?php
 
-class Instructeur extends BaseController
+class Rijexamen extends BaseController
 {
-    private $InstructeurModel;
+    private $RijexamenModel;
 
     public function __construct()
     {
-        $this->InstructeurModel = $this->model('InstructeurModel');
+        $this->RijexamenModel = $this->model('RijexamenModel');
     }
      
-    public function index()
+    public function Rijexamen()
     {
         /**haal alle instucteurs op uit de database (model)*/
 
-         $Instructeur = $this->InstructeurModel->getInstructeur();
+         $Instructeur = $this->RijexamenModel->getRijexamen();
         /**maak de rows voor de tbody in de view*/
         $rows = "";
-        foreach ($Instructeur as $value) {
+        foreach ($RijexamenModel as $value) {
            
             $datum = date_create($value->DatumInDienst);
             $datum = date_format($datum, 'd-m-y');
@@ -28,7 +28,7 @@ class Instructeur extends BaseController
                         <td>$value->Mobiel</td>
                         <td>$datum</td>
                         <td>$value->AantalSterren</td>
-                        <td><a href='/Instructeur/gebruiktevoertuigen/$value->instructeurid'><img src='https://www.freeiconspng.com/thumbs/car-icon-png/car-icon-png-25.png' width = '40px'></a></td>
+                        <td><a href='/Rijexamen/index/$value->rijexamenid'><img src='https://www.freeiconspng.com/thumbs/car-icon-png/car-icon-png-25.png' width = '40px'></a></td>
                         </tr>
                       </tr>";
         }
@@ -37,105 +37,14 @@ class Instructeur extends BaseController
         $data = [
             'titleaaa' => 'Instructeurs in dienst:
                                 ',
-                                'Amountofinstructeurs' => sizeof($Instructeur),
+                                'Amountofinstructeurs' => sizeof($Rijexamen),
 
             'rows' =>$rows
         ];
 
 
-        $this->view('Instructeur/index',$data);
+        $this->view('Rijexamen/index',$data);
     }
-
-
-    public function gebruiktevoertuigen($InstructeurId)
-    {
-    
-        $InstructeurId1 = $this->InstructeurModel->getInstructeurId($InstructeurId);
-        $InstructeurId2 = $this->InstructeurModel->getInstructeurinfo($InstructeurId);
-
-     //var_dump($InstructeurId1);
-
-     $rows = "";
-     foreach ($InstructeurId1 as $value) {
-        $rows .= "<tr>
-                    <td>$value->TypeVoertuig</td>
-                    <td>$value->Type</td>
-                    <td>$value->Kenteken</td>
-                    <td>$value->Bouwjaar</td>
-                    <td>$value->Brandstof</td>
-                    <td>$value->Rijbewijscategorie</td>
-                    </tr>
-                  </tr>";
-      }
-                  $data = [
-                    'titl' => 'Instructeurs in dienst:
-                                        ',
-                                        'Amountofinstructeurs' => sizeof($InstructeurId1),
-                    'VoorNaam' =>$InstructeurId2 -> Voornaam,
-                    'Tussenvoegsel' =>$InstructeurId2 -> Tussenvoegsel,
-                    'Achternaam' =>$InstructeurId2 -> Achternaam,
-                    'DatumInDienst' =>$InstructeurId2 -> DatumInDienst,
-                    'AantalSterren' =>$InstructeurId2 -> AantalSterren,
-
-                    
-                                                     
-                                               
-                    'rows' =>$rows
-                ];
-        
-        
-                $this->view('Instructeur/Gebruiktevoertuigen',$data);
-               // $this->view('Instructeur/Toevoegenvoertuig',$data);
-
-            }
-    
-            public function Toevoegenvoertuig($InstructeurId)
-            {
-            
-                $InstructeurId1 = $this->InstructeurModel->getInstructeurId($InstructeurId);
-                $InstructeurId2 = $this->InstructeurModel->getInstructeurinfo($InstructeurId);
-        
-             //var_dump($InstructeurId1);
-        
-             $rows = "";
-             foreach ($InstructeurId1 as $value) {
-                $rows .= "<tr>
-                            <td>$value->TypeVoertuig</td>
-                            <td>$value->Type</td>
-                            <td>$value->Kenteken</td>
-                            <td>$value->Bouwjaar</td>
-                            <td>$value->Brandstof</td>
-                            <td>$value->Rijbewijscategorie</td>
-                            </tr>
-                          </tr>";
-              }
-                          $data = [
-                            'titl' => 'Instructeurs in dienst:
-                                                ',
-                                                'Amountofinstructeurs' => sizeof($InstructeurId1),
-                            'VoorNaam' =>$InstructeurId2 -> Voornaam,
-                            'Tussenvoegsel' =>$InstructeurId2 -> Tussenvoegsel,
-                            'Achternaam' =>$InstructeurId2 -> Achternaam,
-                            'DatumInDienst' =>$InstructeurId2 -> DatumInDienst,
-                            'AantalSterren' =>$InstructeurId2 -> AantalSterren,
-        
-                            
-                                                             
-                                                       
-                            'rows' =>$rows
-                        ];
-                
-                
-                        $this->view('Instructeur/Gebruiktevoertuigen',$data);
-                       // $this->view('Instructeur/Toevoegenvoertuig',$data);
-        
-                    }
-            
-
-
-
-
-
 
 
 
