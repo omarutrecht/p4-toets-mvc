@@ -12,18 +12,20 @@ class RijexamenModel
     public function getRijexamen()
     {
         $sql = "SELECT
-        Examinator.Voornaam,
-        Examinator.Achternaam,
-        Examen.datum,
-        Examen.rijbewijscategorie,
-        Examen.stad,
-        Examen.uitslag
-      FROM
-        Examen
-      INNER JOIN
-        ExamenPerExaminator ON Examen.id = ExamenPerExaminator.Examenid
-      INNER JOIN
-        Examinator ON ExamenPerExaminator.Examinatorid = Examinator.id;
+  Examinator.Voornaam,
+  Examinator.Achternaam,
+  Examen.datum,
+  Examen.rijbewijscategorie,
+  Examen.rijschool,
+  Examen.stad,
+  Examen.uitslag
+FROM
+  Examen
+INNER JOIN
+  ExamenPerExaminator ON Examen.id = ExamenPerExaminator.Examenid
+INNER JOIN
+  Examinator ON ExamenPerExaminator.Examinatorid = Examinator.id;
+
       ";
 
         $this->db->query($sql);

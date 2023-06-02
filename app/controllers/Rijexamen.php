@@ -2,32 +2,32 @@
 
 class Rijexamen extends BaseController
 {
-    private $RijexamenModel;
+    private $rijexamenModel;
 
     public function __construct()
     {
-        $this->RijexamenModel = $this->model('RijexamenModel');
+        $this->rijexamenModel = $this->model('RijexamenModel');
     }
      
-    public function Rijexamen()
+    public function index()
     {
         /**haal alle instucteurs op uit de database (model)*/
 
-         $Instructeur = $this->RijexamenModel->getRijexamen();
+         $rijexamens = $this->rijexamenModel->getRijexamen();
         /**maak de rows voor de tbody in de view*/
         $rows = "";
-        foreach ($RijexamenModel as $value) {
+        foreach ($rijexamens as $value) {
            
-            $datum = date_create($value->DatumInDienst);
-            $datum = date_format($datum, 'd-m-y');
+          //  $datum = date_create($value->DatumInDienst);
+          //  $datum = date_format($datum, 'd-m-y');
 
             $rows .= "<tr>
                         <td>$value->Voornaam</td>
-                        <td>$value->Tussenvoegsel</td>
-                        <td>$value->Achternaam</td>
-                        <td>$value->Mobiel</td>
-                        <td>$datum</td>
-                        <td>$value->AantalSterren</td>
+                        <td>$value->datum</td>
+                        <td>$value->rijbewijscategorie</td>
+                        <td>$value->rijschool</td>
+                        <td>$value->stad</td>
+                        <td>$value->uitslag</td>
                         <td><a href='/Rijexamen/index/$value->rijexamenid'><img src='https://www.freeiconspng.com/thumbs/car-icon-png/car-icon-png-25.png' width = '40px'></a></td>
                         </tr>
                       </tr>";
