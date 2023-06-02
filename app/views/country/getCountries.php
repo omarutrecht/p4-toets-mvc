@@ -23,6 +23,8 @@
 
 
     <a href='http://mvc-2209c.org/home/index'>Terug naar Home</a>
+    <a href='http://mvc-2209c.org/home/index'>Terug naar Home</a>
+
 
 </body>
 </html>
