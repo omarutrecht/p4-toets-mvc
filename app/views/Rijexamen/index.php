@@ -13,7 +13,7 @@
         <th>Mobiel</th>
         <th>DatumInDienst</th>
         <th>AantalSterren</th>
-        <th>Voertuig</th>
+        <th>Voertui</th>
 
     </thead>
     <tbody>
